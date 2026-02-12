@@ -56,7 +56,7 @@ function MomentsCarousel() {
     {
       title: "Boissons",
       description: "Rafraîchissez-vous avec nos jus pressés et cafés.",
-      image: "https://res.cloudinary.com/dhivn2ahm/image/upload/v1770857880/A_IMG_5972-300x300_um6dvh.webp"
+      image: "https://res.cloudinary.com/dhivn2ahm/image/upload/v1770897907/orange-juice-and-slices-of-orange-isolated-on-white_pymipk.webp"
     }
   ];
 
