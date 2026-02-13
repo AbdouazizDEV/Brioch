@@ -2,7 +2,8 @@ import React, { useState, useEffect, useMemo, useRef } from "react";
 import { Routes, Route, useNavigate, Link } from "react-router";
 import { 
   MapPin, ShoppingBag, Search, Menu, X, Star, Plus, Minus, 
-  Trash2, ChevronRight, Navigation, Clock, Store, CreditCard, ChevronDown, Truck, Package, ChevronLeft, CheckCircle
+  Trash2, ChevronRight, Navigation, Clock, Store, CreditCard, ChevronDown, Truck, Package, ChevronLeft, CheckCircle,
+  UtensilsCrossed, Zap, Percent, Globe, HelpCircle, Facebook, Linkedin, Instagram, Download
 } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { toast } from "sonner";
@@ -857,6 +858,343 @@ function ConfirmationModal({ orderId, onClose, onCreateAccount }: { orderId: str
   );
 }
 
+// --- Sections supplémentaires ---
+
+function HowItWorksSection() {
+  const steps = [
+    {
+      title: "Choisissez votre localisation",
+      description: "Indiquez-nous où vous souhaitez être livré en saisissant votre adresse ou en choisissant une boutique sur la carte.",
+      icon: MapPin,
+      color: "text-bds-red"
+    },
+    {
+      title: "Sélectionnez vos produits",
+      description: "Explorez notre catalogue de viennoiseries, pains, sandwichs et pâtisseries, puis remplissez votre panier avec vos favoris.",
+      icon: ShoppingBag,
+      color: "text-bds-red"
+    },
+    {
+      title: "Suivez votre commande",
+      description: "Suivez le statut de votre commande de la préparation à la livraison en temps réel.",
+      icon: Truck,
+      color: "text-bds-red"
+    },
+    {
+      title: "Savourez votre repas !",
+      description: "Il est temps de vous détendre et de profiter de votre commande.",
+      icon: UtensilsCrossed,
+      color: "text-bds-red"
+    }
+  ];
+
+  return (
+    <section id="how-it-works" className="py-12 md:py-16 lg:py-20 bg-gradient-to-b from-white to-gray-50">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3">
+            Comment ça <span className="text-bds-red">marche</span>
+          </h2>
+          <p className="text-gray-600 text-lg md:text-xl">
+            Commandez un repas en quelques clics seulement !
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          {steps.map((step, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-lg transition-shadow"
+            >
+              <div className={`w-16 h-16 rounded-full bg-red-50 flex items-center justify-center mb-6 ${step.color}`}>
+                <step.icon size={32} />
+              </div>
+              <h3 className="font-bold text-lg md:text-xl text-gray-900 mb-3">
+                {step.title}
+              </h3>
+              <p className="text-gray-600 text-sm md:text-base leading-relaxed">
+                {step.description}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ValuesSection() {
+  const values = [
+    {
+      title: "Une variété de produits",
+      description: "Chez Brioche Dorée, il y en a pour tous les goûts : viennoiseries, pains, sandwichs, pâtisseries, plats chauds et boissons.",
+      icon: UtensilsCrossed,
+      color: "bg-purple-50 text-purple-600"
+    },
+    {
+      title: "Rapide & facile",
+      description: "Commandez vos produits en quelques minutes et nous vous livrons directement à votre porte.",
+      icon: Zap,
+      color: "bg-purple-50 text-purple-600"
+    },
+    {
+      title: "Ne manquez pas nos offres",
+      description: "De nombreuses promotions et offres vous attendent dans l'application.",
+      icon: Percent,
+      color: "bg-purple-50 text-purple-600"
+    }
+  ];
+
+  return (
+    <section id="values" className="py-12 md:py-16 lg:py-20 bg-[#F8F6FA]">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3">
+            Les valeurs de <span className="text-bds-red">Brioche Dorée</span>
+          </h2>
+          <p className="text-gray-600 text-lg md:text-xl">
+            Téléchargez notre application et régalez-vous !
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          {values.map((value, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100"
+            >
+              <div className={`w-16 h-16 rounded-full ${value.color} flex items-center justify-center mb-6`}>
+                <value.icon size={32} />
+              </div>
+              <h3 className="font-bold text-lg md:text-xl text-gray-900 mb-3">
+                {value.title}
+              </h3>
+              <p className="text-gray-600 text-sm md:text-base leading-relaxed">
+                {value.description}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FAQSection() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const faqs = [
+    {
+      question: "Comment Brioche Dorée garantit-elle la fraîcheur et la qualité des produits pendant la livraison ?",
+      answer: "Nous utilisons des emballages isothermes et des véhicules réfrigérés pour maintenir la température optimale. Nos livreurs sont formés pour garantir une livraison rapide et soignée. Tous nos produits sont préparés le jour même et emballés juste avant l'expédition."
+    },
+    {
+      question: "Dans quelles zones Brioche Dorée livre-t-elle et quels sont les frais de livraison ?",
+      answer: "Nous livrons dans toute la région de Dakar. Les frais de livraison sont de 1 500 FCFA pour les commandes standard. La livraison est gratuite pour les commandes supérieures à 10 000 FCFA. Les délais de livraison varient entre 25 et 55 minutes selon votre localisation."
+    },
+    {
+      question: "Y a-t-il des instructions spéciales pour la livraison pendant les heures de pointe ou les conditions météorologiques défavorables ?",
+      answer: "Pendant les heures de pointe, les délais peuvent être légèrement plus longs. En cas de conditions météorologiques défavorables, nous vous informerons de tout retard éventuel. Nous recommandons de prévoir un peu plus de temps pendant ces périodes."
+    },
+    {
+      question: "Brioche Dorée propose-t-elle des réductions ou promotions spéciales pour les clients réguliers ?",
+      answer: "Oui ! Nous avons un programme de fidélité avec 4 niveaux (Bronze, Silver, Gold, Platinum). Vous gagnez des points à chaque commande et pouvez bénéficier de réductions exclusives, de codes promo et d'offres spéciales réservées aux membres."
+    },
+    {
+      question: "Comment puis-je fournir des commentaires ou signaler un problème avec ma commande ?",
+      answer: "Vous pouvez nous contacter via l'application dans la section 'Support', par téléphone au +221 33 XXX XX XX, ou par email à support@briochedoree.sn. Nous répondons généralement dans les 24 heures et traitons chaque problème avec la plus grande attention."
+    }
+  ];
+
+  return (
+    <section id="faq" className="py-12 md:py-16 lg:py-20 bg-white">
+      <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3">
+            Questions fréquemment posées
+          </h2>
+        </div>
+
+        <div className="space-y-4">
+          {faqs.map((faq, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.05 }}
+              className="bg-gray-50 rounded-xl border border-gray-200 overflow-hidden"
+            >
+              <button
+                onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                className="w-full p-4 md:p-6 flex items-center justify-between text-left hover:bg-gray-100 transition-colors"
+              >
+                <span className="font-semibold text-gray-900 text-sm md:text-base pr-4 flex-1">
+                  {faq.question}
+                </span>
+                <ChevronDown
+                  size={20}
+                  className={cn(
+                    "text-gray-500 shrink-0 transition-transform",
+                    openIndex === index && "transform rotate-180"
+                  )}
+                />
+              </button>
+              <AnimatePresence>
+                {openIndex === index && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="px-4 md:px-6 pb-4 md:pb-6 pt-0 text-gray-600 text-sm md:text-base leading-relaxed">
+                      {faq.answer}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <BDSButton
+            onClick={() => {
+              // Scroll to top or navigate to app download
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="px-8 py-4 text-base md:text-lg"
+          >
+            <Download size={20} className="mr-2" />
+            Télécharger l'application
+          </BDSButton>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="bg-[#1A1A2E] text-white">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-12 md:py-16">
+        {/* Top Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 md:gap-12 mb-12">
+          {/* Logo & App Stores */}
+          <div className="lg:col-span-2">
+            <div className="mb-6">
+              <img 
+                src="https://res.cloudinary.com/dhivn2ahm/image/upload/v1770497439/brioche4_ijsecr.webp" 
+                alt="Brioche Dorée" 
+                className="h-12 md:h-16 w-auto mb-6"
+              />
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a
+                href="#"
+                className="inline-flex items-center gap-2 bg-black/30 hover:bg-black/50 px-4 py-3 rounded-lg transition-colors"
+              >
+                <img 
+                  src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge.svg" 
+                  alt="Google Play" 
+                  className="h-8"
+                />
+              </a>
+              <a
+                href="#"
+                className="inline-flex items-center gap-2 bg-black/30 hover:bg-black/50 px-4 py-3 rounded-lg transition-colors"
+              >
+                <img 
+                  src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/fr-fr?size=250x83&releaseDate=1467763200" 
+                  alt="App Store" 
+                  className="h-8"
+                />
+              </a>
+            </div>
+          </div>
+
+          {/* Links Columns */}
+          <div>
+            <h3 className="font-bold text-lg mb-4">Nos services</h3>
+            <ul className="space-y-2 text-gray-300">
+              <li><a href="#" className="hover:text-white transition-colors">Livraison</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Click & Collect</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Catering</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Événements</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-bold text-lg mb-4">Notre entreprise</h3>
+            <ul className="space-y-2 text-gray-300">
+              <li><a href="#" className="hover:text-white transition-colors">À propos</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Carrières</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Actualités</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Support</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-bold text-lg mb-4">Travailler avec nous</h3>
+            <ul className="space-y-2 text-gray-300">
+              <li><a href="#" className="hover:text-white transition-colors">Devenir partenaire</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Devenir livreur</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">Rejoindre l'équipe</a></li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom Section */}
+        <div className="border-t border-gray-700 pt-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="flex flex-wrap items-center gap-4 md:gap-6 text-sm text-gray-400">
+              <div className="flex items-center gap-2">
+                <Globe size={16} />
+                <span>Global</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span>A</span>
+                <span>Français</span>
+              </div>
+              <a href="#" className="hover:text-white transition-colors">Politique de confidentialité</a>
+              <a href="#" className="hover:text-white transition-colors">Conditions d'utilisation</a>
+              <a href="#" className="hover:text-white transition-colors">Politique des cookies</a>
+            </div>
+
+            <div className="flex items-center gap-6">
+              <a href="#" className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors">
+                <HelpCircle size={20} />
+                <span className="hidden sm:inline">Centre d'aide</span>
+              </a>
+              <div className="flex items-center gap-4">
+                <a href="#" className="text-gray-400 hover:text-white transition-colors" aria-label="Facebook">
+                  <Facebook size={20} />
+                </a>
+                <a href="#" className="text-gray-400 hover:text-white transition-colors" aria-label="LinkedIn">
+                  <Linkedin size={20} />
+                </a>
+                <a href="#" className="text-gray-400 hover:text-white transition-colors" aria-label="Instagram">
+                  <Instagram size={20} />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
 function VisitorHome() {
   const [cart, setCart] = useState<CartItem[]>(() => {
     // Charger le panier depuis localStorage
@@ -869,6 +1207,7 @@ function VisitorHome() {
   });
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedStore, setSelectedStore] = useState<string | null>(null);
   const [address, setAddress] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
@@ -886,6 +1225,22 @@ function VisitorHome() {
   const [confirmedOrderId, setConfirmedOrderId] = useState<string | null>(null);
   
   const navigate = useNavigate();
+
+  // Fonction pour scroller vers une section
+  const scrollToSection = (sectionId: string) => {
+    setIsMenuOpen(false);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const headerHeight = 80; // Hauteur du header sticky
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   // Sauvegarder le panier dans localStorage à chaque modification
   useEffect(() => {
@@ -992,6 +1347,28 @@ function VisitorHome() {
             </Link>
           )}
 
+          {/* Menu Desktop - Hidden on mobile */}
+          <div className="hidden md:flex items-center gap-1 lg:gap-2 mr-2">
+            <button
+              onClick={() => scrollToSection('how-it-works')}
+              className="px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-bds-red transition-colors"
+            >
+              Comment ça marche
+            </button>
+            <button
+              onClick={() => scrollToSection('values')}
+              className="px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-bds-red transition-colors"
+            >
+              Nos valeurs
+            </button>
+            <button
+              onClick={() => scrollToSection('faq')}
+              className="px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-bds-red transition-colors"
+            >
+              FAQ
+            </button>
+          </div>
+
           <button 
             onClick={() => setIsCartOpen(true)}
             className="relative p-2 text-gray-700 hover:bg-gray-100 rounded-full transition-colors"
@@ -1011,11 +1388,82 @@ function VisitorHome() {
           >
             Connexion
           </Link>
-          <button className="md:hidden p-2 hover:bg-gray-100 rounded-full transition-colors" aria-label="Menu">
+          <button 
+            onClick={() => setIsMenuOpen(true)}
+            className="md:hidden p-2 hover:bg-gray-100 rounded-full transition-colors" 
+            aria-label="Menu"
+          >
             <Menu size={20}/>
           </button>
         </div>
       </header>
+
+      {/* Menu Drawer Mobile */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <>
+            <motion.div 
+              initial={{ opacity: 0 }} 
+              animate={{ opacity: 1 }} 
+              exit={{ opacity: 0 }}
+              onClick={() => setIsMenuOpen(false)}
+              className="fixed inset-0 bg-black/40 z-50 backdrop-blur-sm md:hidden"
+            />
+            <motion.div
+              initial={{ x: "-100%" }} 
+              animate={{ x: 0 }} 
+              exit={{ x: "-100%" }}
+              className="fixed top-0 left-0 h-full w-[280px] bg-white z-50 shadow-2xl flex flex-col md:hidden"
+            >
+              <div className="p-6 border-b border-gray-100 flex items-center justify-between bg-white">
+                <h2 className="font-serif font-bold text-xl">Menu</h2>
+                <button 
+                  onClick={() => setIsMenuOpen(false)} 
+                  className="p-2 hover:bg-gray-100 rounded-full"
+                >
+                  <X size={20}/>
+                </button>
+              </div>
+
+              <div className="flex-1 overflow-y-auto p-6">
+                <nav className="space-y-2">
+                  <button
+                    onClick={() => scrollToSection('how-it-works')}
+                    className="w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-bds-red transition-colors font-medium flex items-center gap-3"
+                  >
+                    <MapPin size={20} className="text-bds-red" />
+                    Comment ça marche
+                  </button>
+                  <button
+                    onClick={() => scrollToSection('values')}
+                    className="w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-bds-red transition-colors font-medium flex items-center gap-3"
+                  >
+                    <Star size={20} className="text-bds-red" />
+                    Nos valeurs
+                  </button>
+                  <button
+                    onClick={() => scrollToSection('faq')}
+                    className="w-full text-left px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 hover:text-bds-red transition-colors font-medium flex items-center gap-3"
+                  >
+                    <HelpCircle size={20} className="text-bds-red" />
+                    FAQ
+                  </button>
+                </nav>
+
+                <div className="mt-8 pt-8 border-t border-gray-200">
+                  <Link
+                    to="/auth/login"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="block w-full px-4 py-3 rounded-lg border-2 border-bds-red text-bds-red font-bold text-center hover:bg-red-50 transition-colors"
+                  >
+                    Connexion
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
 
       {/* Fly to cart animation */}
       <AnimatePresence>
@@ -1101,6 +1549,12 @@ function VisitorHome() {
           </div>
         </div>
       </main>
+
+      {/* Additional Sections */}
+      <HowItWorksSection />
+      <ValuesSection />
+      <FAQSection />
+      <Footer />
 
       {/* Cart Drawer */}
       <AnimatePresence>
